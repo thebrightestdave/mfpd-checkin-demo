@@ -1,55 +1,81 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Monroe FPD | Personnel Accountability</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#1b1f24;color:#e6e8eb;font:16px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:grid;grid-template-columns:220px 1fr;grid-template-rows:52px 1fr;min-height:100vh}
-header{grid-column:1/3;display:flex;align-items:center;justify-content:space-between;padding:0 20px;background:#111418;border-bottom:1px solid #343a42;font-weight:600;font-size:17px}
-.demo{font-size:12px;font-weight:500;color:#9aa3ad;border:1px solid #4a525c;padding:2px 8px;border-radius:2px;letter-spacing:.05em;text-transform:uppercase}
+*{box-sizing:border-box}body{margin:0;background:#1b1f24;color:#e6e8eb;font:16px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:grid;grid-template-columns:220px 1fr;grid-template-rows:56px 1fr;min-height:100vh}
+header{grid-column:1/3;display:flex;align-items:center;gap:16px;padding:0 20px;background:#111418;border-bottom:1px solid #343a42;font-weight:600;font-size:17px}
+header .sp{flex:1}.demo{font-size:12px;font-weight:500;color:#9aa3ad;border:1px solid #4a525c;padding:2px 8px;border-radius:2px;letter-spacing:.05em;text-transform:uppercase}
+select{min-height:40px;background:#22272e;color:#e6e8eb;border:1px solid #4a525c;border-radius:3px;font:500 14px inherit;font-family:inherit;padding:0 8px}
 nav{background:#15181c;border-right:1px solid #343a42;padding-top:8px}
 nav button{display:block;width:100%;text-align:left;min-height:56px;padding:0 20px;background:none;border:0;border-left:3px solid transparent;color:#b8bfc7;font:500 15px inherit;font-family:inherit;cursor:pointer}
-nav button.on{background:#232931;color:#fff;border-left-color:#3d6fb5}
+nav button.on{background:#232931;color:#fff;border-left-color:#3d6fb5}nav .grp{padding:14px 20px 4px;font-size:11px;color:#6f7882;text-transform:uppercase;letter-spacing:.08em}
 main{padding:20px 24px}section{display:none}section.on{display:block}
 h2{margin:0 0 4px;font-size:20px;font-weight:600}.mut{color:#9aa3ad;font-size:14px}.lbl{font-size:12px;color:#9aa3ad;text-transform:uppercase;letter-spacing:.06em}
-.panel{background:#22272e;border:1px solid #343a42;border-radius:3px;margin-bottom:16px}.ph{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #343a42}
+.panel{background:#22272e;border:1px solid #343a42;border-radius:3px;margin-bottom:16px}.ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #343a42}
 .kv{display:grid;grid-template-columns:repeat(5,1fr);padding:12px 16px;gap:12px}.kv div b{display:block;font-weight:600;margin-top:2px}
-table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:0 16px;height:48px;border-bottom:1px solid #30363e;text-align:left}th{height:36px;background:#1e2329;font-size:12px;font-weight:600;color:#9aa3ad;text-transform:uppercase;letter-spacing:.05em}
-td:last-child{white-space:nowrap}td.num{font-variant-numeric:tabular-nums}
+table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:0 14px;height:48px;border-bottom:1px solid #30363e;text-align:left}th{height:36px;background:#1e2329;font-size:12px;font-weight:600;color:#9aa3ad;text-transform:uppercase;letter-spacing:.05em}
+.num{font-variant-numeric:tabular-nums}
 .btn{min-height:48px;min-width:48px;padding:0 18px;border:1px solid #4a525c;background:#2b313a;color:#e6e8eb;font:600 15px inherit;font-family:inherit;border-radius:3px;cursor:pointer}
 .pri{background:#2f5d9e;border-color:#2f5d9e;color:#fff}.st{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:#c8ced5}
-.warn{color:#d9a54a}svg{flex:none}
+.warn{color:#d9a54a}svg{flex:none}.q{display:inline-block;font-size:12px;color:#b8bfc7;border:1px solid #4a525c;padding:1px 6px;border-radius:2px;margin:1px 3px 1px 0;white-space:nowrap}
 .phone{width:330px;margin:10px auto;border:1px solid #4a525c;border-radius:18px;background:#111418;padding:18px 0 14px}
 .prow{padding:14px 18px;border-bottom:1px solid #30363e}.prow b{display:block;font-weight:600}
-.bar{height:10px;background:#5b6f8a}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bar{height:10px;background:#5b6f8a}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.par{font-size:14px;color:#c8ced5}.yes{color:#e6e8eb}.no{color:#5c656f}
 </style></head><body>
-<header><span>Monroe Fire Protection District | Personnel Accountability</span><span class="demo">Demo data</span></header>
-<nav><button data-t="scene">Incident Roster</button><button data-t="approve">Roster Approval</button><button data-t="phone">Responder App</button><button data-t="reports">Reports</button></nav>
+<header><span>Monroe Fire Protection District | Personnel Accountability</span><span class="sp"></span>
+<label class="mut">Viewing as <select id="role"><option value="chief">Chief</option><option value="officer">Battalion / Station Officer</option><option value="lt">Lieutenant / Company Officer</option><option value="ff">Career FF</option><option value="vol">Volunteer</option></select></label><span class="demo">Demo data</span></header>
+<nav id="nav"></nav>
 <main>
-<section id="scene"><div class="panel"><div class="ph"><div><div class="lbl">Active incident</div><h2>26-004812 &nbsp;Structure Fire – Residential</h2></div><span class="st"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="#b04a4a"/></svg>Active</span></div>
-<div class="kv"><div><span class="lbl">Address</span><b>1234 Example Rd</b></div><div><span class="lbl">Dispatched</span><b>14:02:10</b></div><div><span class="lbl">First due</span><b>Station 3</b></div><div><span class="lbl">Units</span><b>E3, T3, M3</b></div><div><span class="lbl">Volunteers on scene</span><b id="cnt">0</b></div></div></div>
-<div class="panel"><div class="ph"><div><h2>Volunteer Arrivals</h2><div class="mut">Recorded automatically by geofence or apparatus beacon. No manual entry.</div></div><button class="btn" onclick="play()">Run simulation</button></div>
-<table><thead><tr><th>Name</th><th>Rank</th><th>Arrived</th><th>Location</th><th>Source</th></tr></thead><tbody id="live"></tbody></table></div></section>
+<section id="scene"><div class="panel"><div class="ph"><div><div class="lbl">Active incident</div><h2>26-004812 &nbsp;Structure Fire – Residential</h2></div><span class="st"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="#b04a4a"/></svg>Active · <span id="scope"></span></span></div>
+<div class="kv"><div><span class="lbl">Address</span><b>1234 Example Rd</b></div><div><span class="lbl">Dispatched</span><b>14:02:10</b></div><div><span class="lbl">Units</span><b>E31, T3, M3</b></div><div><span class="lbl">On scene</span><b id="cnt">0</b></div><div><span class="lbl">Qualified</span><b id="qsum">–</b></div></div></div>
+<div class="panel"><div class="ph"><div><h2>Accountability</h2><div class="mut">Arrivals recorded by geofence or apparatus beacon. Clock 14:20:00.</div></div><div style="display:flex;gap:8px;align-items:center"><span class="par" id="parst">PAR not run</span><button class="btn" onclick="play()">Run simulation</button><button class="btn pri" id="parb" onclick="runPar()">Run PAR</button></div></div>
+<table><thead><tr><th>Name</th><th>Unit</th><th>Qualifications</th><th>Arrived</th><th>On scene</th><th>Last seen</th><th>Source</th><th>PAR</th></tr></thead><tbody id="live"></tbody></table></div></section>
 <section id="approve"><div class="panel"><div class="ph"><div><h2>Post-Incident Roster – 26-004812</h2><div class="mut">Review and correct entries before approval. All changes are audit-logged.</div></div><button class="btn pri" onclick="this.textContent='Approved – Capt. Demo 15:41';this.disabled=1">Approve roster</button></div>
-<table><thead><tr><th>Name</th><th>Time in</th><th>Time out</th><th>Source</th><th>Status</th><th style="width:220px">Actions</th></tr></thead><tbody id="appr"></tbody></table></div></section>
+<table><thead><tr><th>Name</th><th>Unit</th><th>Time in</th><th>Time out</th><th>Source</th><th>Status</th><th style="width:200px">Actions</th></tr></thead><tbody id="appr"></tbody></table></div></section>
 <section id="phone"><div class="phone"><div class="prow" style="padding-top:0"><span class="lbl">Monroe FPD Responder</span></div>
 <div class="prow"><span class="st"><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="none" stroke="#9aa3ad" stroke-width="2"/><circle cx="7" cy="7" r="2" fill="#9aa3ad"/></svg>Location services</span><b>Active only during dispatched calls</b><span class="mut">Not tracked outside incidents.</span></div>
-<div class="prow"><span class="st"><svg width="14" height="14"><path d="M2 7l3 3 7-7" fill="none" stroke="#7fb08a" stroke-width="2"/></svg>Checked in</span><b>Incident 26-004812</b><span class="mut">14:09:41 · Scene geofence</span></div>
+<div class="prow"><span class="st"><svg width="14" height="14"><path d="M2 7l3 3 7-7" fill="none" stroke="#7fb08a" stroke-width="2"/></svg>Checked in</span><b>Incident 26-004812 · T3</b><span class="mut">14:09:41 · Scene geofence</span></div>
 <div class="prow"><span class="st warn"><svg width="14" height="14"><rect x="1" y="1" width="12" height="12" fill="none" stroke="#d9a54a" stroke-width="2"/></svg>Offline</span><b>1 record queued</b><span class="mut">Syncs automatically when signal returns.</span></div>
 <div style="padding:14px 18px"><button class="btn" style="width:100%">Report an error to officer</button></div></div></section>
-<section id="reports"><div class="ph" style="padding:0 0 12px"><h2>Volunteer Responses – October 2026</h2><span class="mut">Approved records only</span></div>
+<section id="history"><div class="panel"><div class="ph"><div><h2>My Response History</h2><div class="mut" id="me"></div></div><span class="mut">October 2026 · 9 approved</span></div>
+<table><thead><tr><th>Date</th><th>Incident</th><th>Type</th><th>Unit</th><th>Time in</th><th>Duration</th><th>Status</th></tr></thead><tbody id="hist"></tbody></table></div></section>
+<section id="reports"><div class="ph" style="padding:0 0 12px"><h2>Volunteer Responses – October 2026</h2><span class="mut">All stations · approved records only</span></div>
 <div class="grid"><div class="panel"><table><thead><tr><th>Volunteer</th><th>Station</th><th style="width:40%"></th><th>Calls</th></tr></thead><tbody id="rv"></tbody></table></div>
 <div class="panel"><table><thead><tr><th>Station</th><th style="width:50%"></th><th>Responses</th></tr></thead><tbody id="rs"></tbody></table></div></div></section>
+<section id="roles"><div class="panel"><div class="ph"><div><h2>Roles &amp; Permissions</h2><div class="mut">Administrator view. Changes require Chief approval and are audit-logged.</div></div></div>
+<table id="mx"></table></div></section>
+<section id="audit"><div class="panel"><div class="ph"><div><h2>Audit Log</h2><div class="mut">Every view, edit and approval of accountability records.</div></div><span class="mut">Last 24 hours</span></div>
+<table><thead><tr><th>Time</th><th>User</th><th>Action</th><th>Record</th><th>Detail</th></tr></thead><tbody id="aud"></tbody></table></div></section>
 </main>
 <script>
-const F=location.search.includes('fill');
-const V=[["Rivera, A.","FF","Station 3","G"],["Chen, J.","FF","Engine 3","B"],["Patel, K.","EMT","Scene","G"],["Brooks, M.","FF","Truck 3","B"],["Ortiz, S.","Lt","Scene","G"],["Novak, D.","FF","Scene","G"]];
+const $=id=>document.getElementById(id),Q=new URLSearchParams(location.search),F=Q.has('fill');
+// name, rank, unit, location, src, quals, arrive min, last seen min ago
+const V=[["Rivera, A.","FF","E31","Station 3","G",["FF I","FF II","EMT"],4,1],["Chen, J.","FF","E31","Engine 31","B",["FF I","FF II","D/O"],5,0],["Patel, K.","EMT","M3","Scene","G",["EMT"],6,2],["Brooks, M.","FF","T3","Truck 3","B",["FF I","FF II","Hazmat Ops"],7,12],["Ortiz, S.","Lt","E31","Scene","G",["FF I","FF II","EMT","Hazmat Ops"],8,1],["Novak, D.","FF","T3","Scene","G",["FF I"],9,3]];
 const ic={G:'<svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="none" stroke="#9aa3ad" stroke-width="1.5"/><circle cx="6" cy="6" r="1.8" fill="#9aa3ad"/></svg>Geofence',B:'<svg width="12" height="12"><rect x="1.5" y="1.5" width="9" height="9" fill="none" stroke="#9aa3ad" stroke-width="1.5"/></svg>Beacon'};
-const src=s=>`<span class="st">${ic[s]}</span>`,t=i=>'14:0'+(4+i)+':'+(10+i*7);
-function show(x){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==x));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==x))}
-document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
-function add(i){const v=V[i];live.insertAdjacentHTML('beforeend',`<tr><td>${v[0]}</td><td>${v[1]}</td><td class="num">${t(i)}</td><td>${v[2]}</td><td>${src(v[3])}</td></tr>`);cnt.textContent=i+1}
-function play(){live.innerHTML='';cnt.textContent=0;V.forEach((_,i)=>setTimeout(()=>add(i),900*i))}
-appr.innerHTML=V.map((v,i)=>`<tr><td>${v[1]} ${v[0]}</td><td class="num">${t(i)}</td><td class="num">15:3${i}:00</td><td>${src(v[3])}</td><td>${i==5?'<span class="st warn"><svg width="12" height="12"><path d="M6 1L11 11H1Z" fill="none" stroke="#d9a54a" stroke-width="1.5"/></svg>Arrived – not assigned</span>':'<span class="st">Assigned</span>'}</td><td><div style="display:flex;gap:8px"><button class="btn">Edit</button><button class="btn" onclick="this.closest('tr').remove()">Remove</button></div></td></tr>`).join('');
+const tri='<svg width="12" height="12"><path d="M6 1L11 11H1Z" fill="none" stroke="#d9a54a" stroke-width="1.5"/></svg>';
+const src=s=>`<span class="st">${ic[s]}</span>`,t=i=>'14:0'+(4+i)+':'+(10+i*7),qt=q=>q.map(x=>`<span class="q">${x}</span>`).join('');
+let shown=0,par=null;
+function row(i){const v=V[i],seen=v[7]>=10?`<span class="st warn">${tri}Not seen ${v[7]} min</span>`:`<span class="st">${v[7]?v[7]+' min ago':'Now'}</span>`;
+return `<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td>${qt(v[5])}</td><td class="num">${t(i)}</td><td class="num">${20-v[6]}:00</td><td>${seen}</td><td>${src(v[4])}</td><td class="par ${par?'yes':'no'}">${par?'✓ '+par:'—'}</td></tr>`}
+function draw(){$('live').innerHTML=V.slice(0,shown).map((_,i)=>row(i)).join('');$('cnt').textContent=shown;const s=V.slice(0,shown);
+const n=f=>s.filter(v=>v[5].includes(f)).length;$('qsum').textContent=shown?`${n('FF I')} interior-qualified · ${n('EMT')} EMT · ${n('D/O')} D/O`:'–'}
+function play(){shown=0;par=null;$('parst').textContent='PAR not run';draw();V.forEach((_,i)=>setTimeout(()=>{shown=i+1;draw()},900*i))}
+function runPar(){if(!shown)return;par='14:20:00';$('parst').textContent=`PAR complete · ${shown}/${shown} · 14:20:00`;draw()}
+$('appr').innerHTML=V.map((v,i)=>`<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td class="num">${t(i)}</td><td class="num">15:3${i}:00</td><td>${src(v[4])}</td><td>${i==5?`<span class="st warn">${tri}Arrived – not assigned</span>`:'<span class="st">Assigned</span>'}</td><td><div style="display:flex;gap:8px"><button class="btn">Edit</button><button class="btn" onclick="this.closest('tr').remove()">Remove</button></div></td></tr>`).join('');
 const R=[["Rivera, A.",3,14],["Chen, J.",3,11],["Patel, K.",5,9],["Brooks, M.",3,8],["Ortiz, S.",1,7],["Novak, D.",6,4]];
-rv.innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>Sta ${r[1]}</td><td><div class="bar" style="width:${r[2]*7}%"></div></td><td class="num">${r[2]}</td></tr>`).join('');
-rs.innerHTML=[31,22,38,17,25,12,19,9].map((n,i)=>`<tr><td>Station ${i+1}</td><td><div class="bar" style="width:${n*2.5}%"></div></td><td class="num">${n}</td></tr>`).join('');
-const h=location.hash.slice(1)||'scene';show(h);if(F)V.forEach((_,i)=>add(i));
+$('rv').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>Sta ${r[1]}</td><td><div class="bar" style="width:${r[2]*7}%"></div></td><td class="num">${r[2]}</td></tr>`).join('');
+$('rs').innerHTML=[31,22,38,17,25,12,19,9].map((n,i)=>`<tr><td>Station ${i+1}</td><td><div class="bar" style="width:${n*2.5}%"></div></td><td class="num">${n}</td></tr>`).join('');
+$('hist').innerHTML=[["Oct 16","26-004812","Structure Fire","E31","14:04","1h 26m","Pending approval"],["Oct 14","26-004771","MVA w/ Injuries","T3","07:42","0h 58m","Approved"],["Oct 11","26-004702","Alarm – Commercial","T3","19:15","0h 31m","Approved"],["Oct 09","26-004655","Brush Fire","E31","13:03","2h 10m","Approved"],["Oct 04","26-004560","Medical Assist","M3","22:47","0h 44m","Approved"]].map(r=>`<tr>${r.map((c,j)=>`<td class="num">${j==6&&c[0]=='P'?`<span class="warn">${c}</span>`:c}</td>`).join('')}</tr>`).join('');
+const P=["View rosters","Approve rosters","Edit records","View reports","Manage users","View audit log"],RN=["Chief","Battalion / Station Officer","Lieutenant / Company Officer","Career FF","Volunteer"];
+const M=[["All stations","Own station","Own company","Own only","Own only"],["Yes","Own station","Own company","No","No"],["Yes","Own station","Own company","Request only","Request only"],["All stations","Own station","No","No","No"],["Yes","No","No","No","No"],["Yes","No","No","No","No"]];
+$('mx').innerHTML=`<thead><tr><th>Permission</th>${RN.map(r=>`<th>${r}</th>`).join('')}</tr></thead><tbody>${P.map((p,i)=>`<tr><td>${p}</td>${M[i].map(c=>`<td class="${c=='No'?'no':''}">${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+$('aud').innerHTML=[["15:41:07","Capt. Demo","Approved roster","26-004812","6 personnel"],["15:39:52","Capt. Demo","Edited entry","26-004812","Novak, D. – unit set to T3"],["15:38:10","Capt. Demo","Flag reviewed","26-004812","Arrived – not assigned"],["14:20:00","Lt. Ortiz","Ran PAR","26-004812","6/6 accounted"],["11:02:44","Chief Demo","Changed role","User: Patel, K.","Volunteer → Career FF"],["08:15:31","BC Demo","Viewed report","Oct responses","Station 3"]].map(r=>`<tr>${r.map(c=>`<td class="num">${c}</td>`).join('')}</tr>`).join('');
+const NAV={scene:"Incident Roster",approve:"Roster Approval",phone:"Responder App",history:"My History",reports:"Reports",roles:"Roles & Permissions",audit:"Audit Log"};
+const ACC={chief:["scene","approve","reports","roles","audit"],officer:["scene","approve","reports"],lt:["scene","approve","history"],ff:["history","phone"],vol:["phone","history"]};
+const SCOPE={chief:"All stations",officer:"Station 3",lt:"Engine 31 / Station 3"};
+const ME={ff:"FF Rivera, A. · Station 3 · Career",vol:"FF Brooks, M. · Station 3 · Volunteer",lt:"Lt Ortiz, S. · Engine 31"};
+function show(x){document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==x));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==x))}
+function setRole(r,go){const a=ACC[r];$('nav').innerHTML=a.map(k=>`<button data-t="${k}">${NAV[k]}</button>`).join('');document.querySelectorAll('nav button').forEach(b=>b.onclick=()=>show(b.dataset.t));
+$('scope').textContent=SCOPE[r]||'';$('me').textContent=ME[r]||'';show(a.includes(go)?go:a[0])}
+$('role').onchange=e=>setRole(e.target.value);
+const r0=Q.get('role')||'chief';$('role').value=r0;setRole(r0,location.hash.slice(1));if(F){shown=6;if(Q.has('par'))runPar();draw()}
 </script></body></html>
