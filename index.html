@@ -1,40 +1,45 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Monroe FPD | Personnel Accountability</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#1b1f24;color:#e6e8eb;font:16px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:grid;grid-template-columns:220px 1fr;grid-template-rows:56px 1fr;min-height:100vh}
-header{grid-column:1/3;display:flex;align-items:center;gap:16px;padding:0 20px;background:#111418;border-bottom:1px solid #343a42;font-weight:600;font-size:17px}
-header .sp{flex:1}.demo{font-size:12px;font-weight:500;color:#9aa3ad;border:1px solid #4a525c;padding:2px 8px;border-radius:2px;letter-spacing:.05em;text-transform:uppercase}
-select{min-height:40px;background:#22272e;color:#e6e8eb;border:1px solid #4a525c;border-radius:3px;font:500 14px inherit;font-family:inherit;padding:0 8px}
-nav{background:#15181c;border-right:1px solid #343a42;padding-top:8px}
-nav button{display:block;width:100%;text-align:left;min-height:56px;padding:0 20px;background:none;border:0;border-left:3px solid transparent;color:#b8bfc7;font:500 15px inherit;font-family:inherit;cursor:pointer}
-nav button.on{background:#232931;color:#fff;border-left-color:#3d6fb5}nav .grp{padding:14px 20px 4px;font-size:11px;color:#6f7882;text-transform:uppercase;letter-spacing:.08em}
-main{padding:20px 24px}section{display:none}section.on{display:block}
-h2{margin:0 0 4px;font-size:20px;font-weight:600}.mut{color:#9aa3ad;font-size:14px}.lbl{font-size:12px;color:#9aa3ad;text-transform:uppercase;letter-spacing:.06em}
-.panel{background:#22272e;border:1px solid #343a42;border-radius:3px;margin-bottom:16px}.ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid #343a42}
-.kv{display:grid;grid-template-columns:repeat(5,1fr);padding:12px 16px;gap:12px}.kv div b{display:block;font-weight:600;margin-top:2px}
-table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:0 14px;height:48px;border-bottom:1px solid #30363e;text-align:left}th{height:36px;background:#1e2329;font-size:12px;font-weight:600;color:#9aa3ad;text-transform:uppercase;letter-spacing:.05em}
-.num{font-variant-numeric:tabular-nums}
-.btn{min-height:48px;min-width:48px;padding:0 18px;border:1px solid #4a525c;background:#2b313a;color:#e6e8eb;font:600 15px inherit;font-family:inherit;border-radius:3px;cursor:pointer}
-.pri{background:#2f5d9e;border-color:#2f5d9e;color:#fff}.st{display:inline-flex;align-items:center;gap:6px;font-size:14px;color:#c8ced5}
-.warn{color:#d9a54a}svg{flex:none}.q{display:inline-block;font-size:12px;color:#b8bfc7;border:1px solid #4a525c;padding:1px 6px;border-radius:2px;margin:1px 3px 1px 0;white-space:nowrap}
-.phone{width:330px;margin:10px auto;border:1px solid #4a525c;border-radius:18px;background:#111418;padding:18px 0 14px}
-.prow{padding:14px 18px;border-bottom:1px solid #30363e}.prow b{display:block;font-weight:600}
-.bar{height:10px;background:#5b6f8a}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.par{font-size:14px;color:#c8ced5}.yes{color:#e6e8eb}.no{color:#5c656f}
+*{box-sizing:border-box}body{margin:0;background:#0B0F14;color:#F4F6F8;font:16px/1.4 -apple-system,"Segoe UI",Roboto,Arial,sans-serif;display:grid;grid-template-columns:230px 1fr;grid-template-rows:60px 1fr;min-height:100vh}
+header{grid-column:1/3;display:flex;align-items:center;gap:16px;padding:0 20px;background:#000;border-bottom:2px solid #FFC20E;font-weight:800;font-size:18px;letter-spacing:.02em;text-transform:uppercase}
+header .sp{flex:1}.demo{font-size:12px;font-weight:800;color:#0B0F14;background:#C9D1D9;padding:3px 8px;letter-spacing:.08em}
+select{min-height:42px;background:#0B0F14;color:#fff;border:2px solid #5A6572;border-radius:0;font:700 14px inherit;font-family:inherit;padding:0 8px}
+header label{font-size:12px;letter-spacing:.08em;color:#9AA4AF}
+nav{background:#05080B;border-right:2px solid #2A323C;padding-top:10px}
+nav button{display:block;width:100%;text-align:left;min-height:58px;padding:0 20px;background:none;border:0;border-left:6px solid transparent;color:#AEB7C1;font:700 15px inherit;font-family:inherit;text-transform:uppercase;letter-spacing:.06em;cursor:pointer}
+nav button:hover{color:#fff;background:#11171E}nav button.on{background:#FFC20E;color:#0B0F14;border-left-color:#0B0F14}
+main{padding:22px 26px}section{display:none}section.on{display:block}
+h2{margin:0 0 4px;font-size:24px;font-weight:900;text-transform:uppercase;letter-spacing:.02em;font-stretch:condensed}.mut{color:#AEB7C1;font-size:14px}.lbl{font-size:12px;font-weight:800;color:#9AA4AF;text-transform:uppercase;letter-spacing:.12em}
+.panel{background:#121820;border:2px solid #2E3843;border-radius:0;margin-bottom:18px}.ph{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-bottom:2px solid #2E3843}
+.kv{display:grid;grid-template-columns:repeat(5,1fr);gap:0}.kv>div{padding:14px 16px;border-right:2px solid #2E3843}.kv>div:last-child{border-right:0}.kv div b{display:block;font-weight:900;font-size:28px;margin-top:4px;line-height:1.1}
+.kv div b.sm{font-size:18px}
+table{width:100%;border-collapse:collapse;font-size:15px}th,td{padding:0 14px;height:50px;border-bottom:1px solid #2A323C;text-align:left}th{height:38px;background:#0B0F14;font-size:12px;font-weight:800;color:#C9D1D9;text-transform:uppercase;letter-spacing:.1em;border-bottom:2px solid #2E3843}
+td{font-weight:500}.num{font-variant-numeric:tabular-nums;font-weight:700}
+.btn{min-height:50px;min-width:50px;padding:0 20px;border:2px solid #5A6572;background:#0B0F14;color:#fff;font:800 15px inherit;font-family:inherit;text-transform:uppercase;letter-spacing:.06em;border-radius:0;cursor:pointer}
+.btn:hover{border-color:#fff}.pri{background:#FFC20E;border-color:#FFC20E;color:#0B0F14}.pri:disabled{background:#1E9E4A;border-color:#1E9E4A;color:#fff}
+.st{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#DCE2E8}
+.chip{display:inline-block;padding:3px 9px;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.c-red{background:#D7261E;color:#fff}.c-grn{background:#1E9E4A;color:#fff}.c-yel{background:#FFC20E;color:#0B0F14}.c-gry{background:#2E3843;color:#DCE2E8}
+.warn{color:#FFC20E}svg{flex:none}.q{display:inline-block;font-size:12px;font-weight:800;color:#0B0F14;background:#C9D1D9;padding:2px 6px;margin:1px 3px 1px 0;white-space:nowrap}
+.phone{width:340px;margin:10px auto;border:3px solid #5A6572;border-radius:22px;background:#05080B;padding:18px 0 14px}
+.prow{padding:14px 18px;border-bottom:2px solid #2A323C}.prow b{display:block;font-weight:900;font-size:18px;margin-top:6px}
+.bar{height:14px;background:#C9D1D9}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.no{color:#5C656F}td.yes-c{color:#fff;font-weight:800}
 </style></head><body>
 <header><span>Monroe Fire Protection District | Personnel Accountability</span><span class="sp"></span>
 <label class="mut">Viewing as <select id="role"><option value="chief">Chief</option><option value="officer">Battalion / Station Officer</option><option value="lt">Lieutenant / Company Officer</option><option value="ff">Career FF</option><option value="vol">Volunteer</option></select></label><span class="demo">Demo data</span></header>
 <nav id="nav"></nav>
 <main>
-<section id="scene"><div class="panel"><div class="ph"><div><div class="lbl">Active incident</div><h2>26-004812 &nbsp;Structure Fire – Residential</h2></div><span class="st"><svg width="10" height="10"><circle cx="5" cy="5" r="5" fill="#b04a4a"/></svg>Active · <span id="scope"></span></span></div>
-<div class="kv"><div><span class="lbl">Address</span><b>1234 Example Rd</b></div><div><span class="lbl">Dispatched</span><b>14:02:10</b></div><div><span class="lbl">Units</span><b>E31, T3, M3</b></div><div><span class="lbl">On scene</span><b id="cnt">0</b></div><div><span class="lbl">Qualified</span><b id="qsum">–</b></div></div></div>
-<div class="panel"><div class="ph"><div><h2>Accountability</h2><div class="mut">Arrivals recorded by geofence or apparatus beacon. Clock 14:20:00.</div></div><div style="display:flex;gap:8px;align-items:center"><span class="par" id="parst">PAR not run</span><button class="btn" onclick="play()">Run simulation</button><button class="btn pri" id="parb" onclick="runPar()">Run PAR</button></div></div>
+<section id="scene"><div class="panel"><div class="ph"><div><div class="lbl">Active incident</div><h2>26-004812 &nbsp;Structure Fire – Residential</h2></div><span><span class="chip c-red">Active</span> <span class="chip c-gry" id="scope"></span></span></div>
+<div class="kv"><div><span class="lbl">Address</span><b class="sm">1234 Example Rd</b></div><div><span class="lbl">Elapsed</span><b class="num">18:00</b></div><div><span class="lbl">Units</span><b class="sm">E31, T3, M3</b></div><div><span class="lbl">On scene</span><b id="cnt">0</b></div><div><span class="lbl">Qualified</span><b id="qsum" class="sm">–</b></div></div></div>
+<div class="panel"><div class="ph"><div><h2>Accountability</h2><div class="mut">Arrivals recorded by geofence or apparatus beacon. Clock 14:20:00.</div></div><div style="display:flex;gap:8px;align-items:center"><span class="chip c-gry" id="parst" style="font-size:14px;padding:8px 12px">PAR not run</span><button class="btn" onclick="play()">Run simulation</button><button class="btn pri" id="parb" onclick="runPar()">Run PAR</button></div></div>
 <table><thead><tr><th>Name</th><th>Unit</th><th>Qualifications</th><th>Arrived</th><th>On scene</th><th>Last seen</th><th>Source</th><th>PAR</th></tr></thead><tbody id="live"></tbody></table></div></section>
-<section id="approve"><div class="panel"><div class="ph"><div><h2>Post-Incident Roster – 26-004812</h2><div class="mut">Review and correct entries before approval. All changes are audit-logged.</div></div><button class="btn pri" onclick="this.textContent='Approved – Capt. Demo 15:41';this.disabled=1">Approve roster</button></div>
+<section id="approve"><div class="panel"><div class="ph"><div><h2>Post-Incident Roster – 26-004812</h2><div class="mut">Review and correct entries before approval. All changes are audit-logged.</div></div><button class="btn pri" onclick="this.textContent='Approved · Capt. Demo 15:41';this.disabled=1">Approve roster</button></div>
 <table><thead><tr><th>Name</th><th>Unit</th><th>Time in</th><th>Time out</th><th>Source</th><th>Status</th><th style="width:200px">Actions</th></tr></thead><tbody id="appr"></tbody></table></div></section>
 <section id="phone"><div class="phone"><div class="prow" style="padding-top:0"><span class="lbl">Monroe FPD Responder</span></div>
 <div class="prow"><span class="st"><svg width="14" height="14"><circle cx="7" cy="7" r="6" fill="none" stroke="#9aa3ad" stroke-width="2"/><circle cx="7" cy="7" r="2" fill="#9aa3ad"/></svg>Location services</span><b>Active only during dispatched calls</b><span class="mut">Not tracked outside incidents.</span></div>
-<div class="prow"><span class="st"><svg width="14" height="14"><path d="M2 7l3 3 7-7" fill="none" stroke="#7fb08a" stroke-width="2"/></svg>Checked in</span><b>Incident 26-004812 · T3</b><span class="mut">14:09:41 · Scene geofence</span></div>
-<div class="prow"><span class="st warn"><svg width="14" height="14"><rect x="1" y="1" width="12" height="12" fill="none" stroke="#d9a54a" stroke-width="2"/></svg>Offline</span><b>1 record queued</b><span class="mut">Syncs automatically when signal returns.</span></div>
+<div class="prow"><span class="chip c-grn">Checked in</span><b>Incident 26-004812 · T3</b><span class="mut">14:09:41 · Scene geofence</span></div>
+<div class="prow"><span class="chip c-yel">Offline</span><b>1 record queued</b><span class="mut">Syncs automatically when signal returns.</span></div>
 <div style="padding:14px 18px"><button class="btn" style="width:100%">Report an error to officer</button></div></div></section>
 <section id="history"><div class="panel"><div class="ph"><div><h2>My Response History</h2><div class="mut" id="me"></div></div><span class="mut">October 2026 · 9 approved</span></div>
 <table><thead><tr><th>Date</th><th>Incident</th><th>Type</th><th>Unit</th><th>Time in</th><th>Duration</th><th>Status</th></tr></thead><tbody id="hist"></tbody></table></div></section>
@@ -54,20 +59,20 @@ const ic={G:'<svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="none"
 const tri='<svg width="12" height="12"><path d="M6 1L11 11H1Z" fill="none" stroke="#d9a54a" stroke-width="1.5"/></svg>';
 const src=s=>`<span class="st">${ic[s]}</span>`,t=i=>'14:0'+(4+i)+':'+(10+i*7),qt=q=>q.map(x=>`<span class="q">${x}</span>`).join('');
 let shown=0,par=null;
-function row(i){const v=V[i],seen=v[7]>=10?`<span class="st warn">${tri}Not seen ${v[7]} min</span>`:`<span class="st">${v[7]?v[7]+' min ago':'Now'}</span>`;
-return `<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td>${qt(v[5])}</td><td class="num">${t(i)}</td><td class="num">${20-v[6]}:00</td><td>${seen}</td><td>${src(v[4])}</td><td class="par ${par?'yes':'no'}">${par?'✓ '+par:'—'}</td></tr>`}
+function row(i){const v=V[i],seen=v[7]>=10?`<span class="chip c-red">Not seen ${v[7]} min</span>`:`<span class="st">${v[7]?v[7]+' min ago':'Now'}</span>`;
+return `<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td>${qt(v[5])}</td><td class="num">${t(i)}</td><td class="num">${20-v[6]}:00</td><td>${seen}</td><td>${src(v[4])}</td><td>${par?'<span class="chip c-grn">OK '+par+'</span>':'<span class="chip c-gry">Pending</span>'}</td></tr>`}
 function draw(){$('live').innerHTML=V.slice(0,shown).map((_,i)=>row(i)).join('');$('cnt').textContent=shown;const s=V.slice(0,shown);
 const n=f=>s.filter(v=>v[5].includes(f)).length;$('qsum').textContent=shown?`${n('FF I')} interior-qualified · ${n('EMT')} EMT · ${n('D/O')} D/O`:'–'}
-function play(){shown=0;par=null;$('parst').textContent='PAR not run';draw();V.forEach((_,i)=>setTimeout(()=>{shown=i+1;draw()},900*i))}
-function runPar(){if(!shown)return;par='14:20:00';$('parst').textContent=`PAR complete · ${shown}/${shown} · 14:20:00`;draw()}
-$('appr').innerHTML=V.map((v,i)=>`<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td class="num">${t(i)}</td><td class="num">15:3${i}:00</td><td>${src(v[4])}</td><td>${i==5?`<span class="st warn">${tri}Arrived – not assigned</span>`:'<span class="st">Assigned</span>'}</td><td><div style="display:flex;gap:8px"><button class="btn">Edit</button><button class="btn" onclick="this.closest('tr').remove()">Remove</button></div></td></tr>`).join('');
+function play(){shown=0;par=null;$('parst').textContent='PAR not run';$("parst").className="chip c-gry";draw();V.forEach((_,i)=>setTimeout(()=>{shown=i+1;draw()},900*i))}
+function runPar(){if(!shown)return;par='14:20:00';$('parst').textContent=`PAR OK · ${shown}/${shown} · 14:20:00`;$('parst').className='chip c-grn';draw()}
+$('appr').innerHTML=V.map((v,i)=>`<tr><td>${v[1]} ${v[0]}</td><td>${v[2]}</td><td class="num">${t(i)}</td><td class="num">15:3${i}:00</td><td>${src(v[4])}</td><td>${i==5?`<span class="chip c-red">Arrived – not assigned</span>`:'<span class="chip c-grn">Assigned</span>'}</td><td><div style="display:flex;gap:8px"><button class="btn">Edit</button><button class="btn" onclick="this.closest('tr').remove()">Remove</button></div></td></tr>`).join('');
 const R=[["Rivera, A.",3,14],["Chen, J.",3,11],["Patel, K.",5,9],["Brooks, M.",3,8],["Ortiz, S.",1,7],["Novak, D.",6,4]];
 $('rv').innerHTML=R.map(r=>`<tr><td>${r[0]}</td><td>Sta ${r[1]}</td><td><div class="bar" style="width:${r[2]*7}%"></div></td><td class="num">${r[2]}</td></tr>`).join('');
 $('rs').innerHTML=[31,22,38,17,25,12,19,9].map((n,i)=>`<tr><td>Station ${i+1}</td><td><div class="bar" style="width:${n*2.5}%"></div></td><td class="num">${n}</td></tr>`).join('');
-$('hist').innerHTML=[["Oct 16","26-004812","Structure Fire","E31","14:04","1h 26m","Pending approval"],["Oct 14","26-004771","MVA w/ Injuries","T3","07:42","0h 58m","Approved"],["Oct 11","26-004702","Alarm – Commercial","T3","19:15","0h 31m","Approved"],["Oct 09","26-004655","Brush Fire","E31","13:03","2h 10m","Approved"],["Oct 04","26-004560","Medical Assist","M3","22:47","0h 44m","Approved"]].map(r=>`<tr>${r.map((c,j)=>`<td class="num">${j==6&&c[0]=='P'?`<span class="warn">${c}</span>`:c}</td>`).join('')}</tr>`).join('');
+$('hist').innerHTML=[["Oct 16","26-004812","Structure Fire","E31","14:04","1h 26m","Pending approval"],["Oct 14","26-004771","MVA w/ Injuries","T3","07:42","0h 58m","Approved"],["Oct 11","26-004702","Alarm – Commercial","T3","19:15","0h 31m","Approved"],["Oct 09","26-004655","Brush Fire","E31","13:03","2h 10m","Approved"],["Oct 04","26-004560","Medical Assist","M3","22:47","0h 44m","Approved"]].map(r=>`<tr>${r.map((c,j)=>`<td class="num">${j==6&&c[0]=='P'?`<span class="chip c-yel">${c}</span>`:(j==6?`<span class="chip c-grn">${c}</span>`:c)}</td>`).join('')}</tr>`).join('');
 const P=["View rosters","Approve rosters","Edit records","View reports","Manage users","View audit log"],RN=["Chief","Battalion / Station Officer","Lieutenant / Company Officer","Career FF","Volunteer"];
 const M=[["All stations","Own station","Own company","Own only","Own only"],["Yes","Own station","Own company","No","No"],["Yes","Own station","Own company","Request only","Request only"],["All stations","Own station","No","No","No"],["Yes","No","No","No","No"],["Yes","No","No","No","No"]];
-$('mx').innerHTML=`<thead><tr><th>Permission</th>${RN.map(r=>`<th>${r}</th>`).join('')}</tr></thead><tbody>${P.map((p,i)=>`<tr><td>${p}</td>${M[i].map(c=>`<td class="${c=='No'?'no':''}">${c}</td>`).join('')}</tr>`).join('')}</tbody>`;
+$('mx').innerHTML=`<thead><tr><th>Permission</th>${RN.map(r=>`<th>${r}</th>`).join('')}</tr></thead><tbody>${P.map((p,i)=>`<tr><td>${p}</td>${M[i].map(c=>`<td>${c=='No'?'<span class="no">No</span>':c=='Yes'?'<span class="chip c-grn">Yes</span>':`<b>${c}</b>`}</td>`).join('')}</tr>`).join('')}</tbody>`;
 $('aud').innerHTML=[["15:41:07","Capt. Demo","Approved roster","26-004812","6 personnel"],["15:39:52","Capt. Demo","Edited entry","26-004812","Novak, D. – unit set to T3"],["15:38:10","Capt. Demo","Flag reviewed","26-004812","Arrived – not assigned"],["14:20:00","Lt. Ortiz","Ran PAR","26-004812","6/6 accounted"],["11:02:44","Chief Demo","Changed role","User: Patel, K.","Volunteer → Career FF"],["08:15:31","BC Demo","Viewed report","Oct responses","Station 3"]].map(r=>`<tr>${r.map(c=>`<td class="num">${c}</td>`).join('')}</tr>`).join('');
 const NAV={scene:"Incident Roster",approve:"Roster Approval",phone:"Responder App",history:"My History",reports:"Reports",roles:"Roles & Permissions",audit:"Audit Log"};
 const ACC={chief:["scene","approve","reports","roles","audit"],officer:["scene","approve","reports"],lt:["scene","approve","history"],ff:["history","phone"],vol:["phone","history"]};
